@@ -18,12 +18,24 @@ void function(exports, winElement, docElement) {
   var configs = {
     home: '__homepage__',
     more: '__morepage__',
+    title: '__title__',
+    desc: '__description__',
+    coverUrl: '__cover-url__',
+    coverWidth: '__cover-width__',
+    coverHeight: '__cover-height__',
+    onGameover: null, // function() { ... }
+    onReplay: null, // function() { ... }
     onScoreChange: null, // function(currScore, oldScore, maxScore) { ... }
-    onWeixinReady: null
+    onWeixinReady: null // function() { ... }
   };
 
-  var maxScore = 0;
-  var currScore = 0;
+  var maxScore = 0; // 历史记录
+  var currScore = 0; // 当前积分
+
+  /**
+   * 初始化游戏
+   * @param{Object} options 选项
+   */
   function init(options) {
     var options = options || {};
     for (var name in options) {
@@ -34,9 +46,20 @@ void function(exports, winElement, docElement) {
   }
   exports.init = init;
 
+  /**
+   * 当前积分改变
+   * @param{Number} value 新积分值
+   */
   function setCurrScore(value) {
     if (configs.onScoreChange) {
-      configs.onScoreChange(value, currScore, maxScore);
+      var result = {};
+      configs.onScoreChange(value, currScore, maxScore, result);
+      if (typeof result.title === 'string') {
+        configs.title = result.title;
+      }
+      if (typeof result.desc === 'string') {
+        configs.desc = result.desc;
+      }
     }
     currScore = value;
     if (currScore > maxScore) { // 保存历史记录
@@ -45,6 +68,9 @@ void function(exports, winElement, docElement) {
     }
   }
 
+  /**
+   * 更多游戏
+   */
   function more() {
     location.href = configs.home;
   }
@@ -79,9 +105,26 @@ void function(exports, winElement, docElement) {
     });
   });
 
+  /**
+   * 从新游戏开始
+   */
   function replay() {
-    /* TODO */
+    setCurrScore(0);
+    if (configs.onReplay) {
+      configs.onReplay();
+    }
+    /* TODO : 处理从新游戏开始 */
   }
   exports.replay = replay;
+
+  /**
+   * 游戏结束
+   */
+  function gameover() {
+    if (configs.onGameover) {
+      configs.onGameover();
+    }
+    /* TODO : 处理游戏结束 */
+  }
 
 }(game, window, document);

@@ -42,7 +42,7 @@ function encodeHTML(text){
 }
 
 function replacer(text) {
-  return String(text).replace(/__([#@]?)([\w$]+)__/g, function(all, flag, key) {
+  return String(text).replace(/__([#@]?)([\w$-]+)__/g, function(all, flag, key) {
     var value = values[key] || '';
     switch (flag) {
       case '@':
@@ -102,4 +102,13 @@ scanDir('build', function(file) {
   var to = path.join('apps', values.name, file);
   forceDirSync(path.dirname(to));
   fs.writeFileSync(to, replacer(fs.readFileSync(from)));
-})
+});
+
+forceDirSync(path.join('apps', values.name, 'src', 'img'));
+fs.writeFileSync(
+   path.join('apps', values.name, 'src', 'img', 'cover.png'),
+   fs.readFileSync(path.join('src', 'img', 'cover.png')),
+   {
+     encoding: null
+   }
+);

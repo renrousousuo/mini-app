@@ -14,6 +14,7 @@
   <article>
     <div id="qrcodeTable"></div>
     <div id="qrcodeHint">手机扫描二维码进行游戏</div>
+    <img src="img/cover.png" width="64" height="64">
   </article>
   <footer>
     <a href="__@morepage__">更多游戏</a>
@@ -24,7 +25,7 @@
 $(function() {
   var ie = document.all && document.attachEvent;
   var ie9plus = ie && window.XMLHttpRequest && window.addEventListener && document.documentMode >= 9;
-  $('#qrcodeTable').html('').qrcode({
+  $('#qrcodeTable').qrcode({
     render: ie && !ie9plus ? 'table' : 'canvas',
     text: '__homepage__'
   });

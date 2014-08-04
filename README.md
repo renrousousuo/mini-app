@@ -1,11 +1,11 @@
 迷你应用开发框架
 ----
 
-## 使用步骤
+## 生成新应用的步骤
 
 * `$git clone https://github.com/renrousousuo/mini-app.git`
 * `$cd mini-app`
-* 按需求修改 `values.json`。
+* 按需求修改 `tools/values.json`。
 * `$node tools/clone.js`
 * 在 `apps` 目录拿走。
 
@@ -15,7 +15,7 @@
 
 ```json
 {
-	'name': value
+	"name": "value"
 }
 ```
 

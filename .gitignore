@@ -8,6 +8,7 @@ vim/.netrwhist
 
 # apps
 apps
+dist
 
 # temp
 .DS_Store

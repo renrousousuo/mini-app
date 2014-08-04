@@ -24,7 +24,7 @@ void function(exports) {
   var soundElements;
 
   if (mobile) {
-    /*<include ./include/mobile.js>*/
+    /*<include ../include/mobile.js>*/
   }
 
   /*

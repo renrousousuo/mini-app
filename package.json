@@ -1,0 +1,16 @@
+{
+  "name": "__name__",
+  "title": "__title__",
+  "description": "__description__",
+  "version": "0.0.0",
+  "homepage": "__homepage__",
+  "author": "__author__",
+  "license": "MIT",
+  "devDependencies": {
+    "uglify-js": "*",
+    "jshint": "*"
+  },
+  "scripts": {
+    "lint": "jshint src/*.js *.json"
+  }
+}

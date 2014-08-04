@@ -1,0 +1,56 @@
+html {
+  touch-action: none;
+  -ms-touch-action: none;
+}
+
+body {
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  height: 100%;
+  background:
+    radial-gradient(black 15%, transparent 16%) 0 0,
+    radial-gradient(black 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+    background-color: #282828;
+    background-size: 16px 16px;
+}
+
+* {
+  -webkit-touch-callout: none;
+  touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+footer, header, article {
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 2px #666;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: #eee;
+  width: 100%;
+  height: 34px;
+}
+
+footer a {
+  margin: 0 10px;
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 5px;
+  background: white;
+  line-height: 34px;
+  color: #111;
+  border: 1px solid gray;
+}

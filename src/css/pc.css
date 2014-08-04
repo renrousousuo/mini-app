@@ -1,0 +1,10 @@
+#qrcodeTable {
+  padding: 10px;
+  border-radius: 7px;
+  background: white;
+  display: inline-block;
+}
+
+#qrcodeHint {
+  padding: 10px;
+}

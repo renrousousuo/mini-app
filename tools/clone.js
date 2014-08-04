@@ -1,14 +1,14 @@
 var fs = require('fs');
 var path = require('path');
-var configFile = path.join('tools', 'app.json');
+var valueFile = path.join('tools', 'values.json');
 
-if (!fs.existsSync(configFile)) {
-  console.error('"%s" not exists.', configFile);
+if (!fs.existsSync(valueFile)) {
+  console.error('"%s" not exists.', valueFile);
   return;
 }
 
 try {
-  var configs = JSON.parse(fs.readFileSync(configFile));
+  var values = JSON.parse(fs.readFileSync(valueFile));
 } catch(ex) {
   console.error(ex.message);
   return;
@@ -25,10 +25,39 @@ function forceDirSync(dir) {
   }
 }
 
-function replacer(text) {
-  return String(text).replace(/__([\w$]+)__/g, function(all, key) {
-    return configs[key] || '';
+/**
+ * HTML编码
+ * @param {String} text
+ */
+function encodeHTML(text){
+  return String(text).replace(/["<>& ]/g, function(all){
+    return "&" + {
+      '"': 'quot',
+      '<': 'lt',
+      '>': 'gt',
+      '&': 'amp',
+      ' ': 'nbsp'
+    }[all] + ";";
   });
+}
+
+function replacer(text) {
+  return String(text).replace(/__([#@]?)([\w$]+)__/g, function(all, flag, key) {
+    var value = values[key] || '';
+    switch (flag) {
+      case '@':
+        value = encodeHTML(value);
+        break;
+      case '#':
+        value = JSON.stringify(value).slice(1, -1);
+        break;
+    }
+    return value;
+  });
+}
+
+for (var key in values) {
+  values[key] = replacer(key);
 }
 
 function scanDir(dir, callback) {
@@ -49,7 +78,7 @@ scanDir('src', function(file) {
     return;
   }
   var from = file;
-  var to = path.join('apps', configs.name, file);
+  var to = path.join('apps', values.name, file);
   forceDirSync(path.dirname(to));
   fs.writeFileSync(to, replacer(fs.readFileSync(from)));
 });
@@ -59,7 +88,7 @@ scanDir('build', function(file) {
     return;
   }
   var from = file;
-  var to = path.join('apps', configs.name, file);
+  var to = path.join('apps', values.name, file);
   forceDirSync(path.dirname(to));
   fs.writeFileSync(to, replacer(fs.readFileSync(from)));
 });
@@ -70,7 +99,7 @@ scanDir('build', function(file) {
   '.gitignore'
 ].forEach(function(file) {
   var from = file;
-  var to = path.join('apps', configs.name, file);
+  var to = path.join('apps', values.name, file);
   forceDirSync(path.dirname(to));
   fs.writeFileSync(to, replacer(fs.readFileSync(from)));
 })

@@ -57,7 +57,7 @@ function replacer(text) {
 }
 
 for (var key in values) {
-  values[key] = replacer(key);
+  values[key] = replacer(values[key]);
 }
 
 function scanDir(dir, callback) {

@@ -74,13 +74,16 @@ function scanDir(dir, callback) {
 
 // forceDirSync('apps/hello/src/css');
 scanDir('src', function(file) {
-  if (!/\.(css|html|js|json|txt|md|less|sass|es6)$/.test(file)) {
-    return;
-  }
   var from = file;
-  var to = path.join('apps', values.name, file);
+  var to = replacer(path.join('apps', values.name, file));
   forceDirSync(path.dirname(to));
-  fs.writeFileSync(to, replacer(fs.readFileSync(from)));
+  if (/\.(css|html|js|json|txt|md|less|sass|es6)$/.test(file)) {
+    fs.writeFileSync(to, replacer(fs.readFileSync(from)));
+  } else { // 二进制文件复制
+    fs.writeFileSync(to, fs.readFileSync(from), {
+      encoding: null
+    });
+  }
 });
 
 scanDir('build', function(file) {
@@ -88,7 +91,7 @@ scanDir('build', function(file) {
     return;
   }
   var from = file;
-  var to = path.join('apps', values.name, file);
+  var to = replacer(path.join('apps', values.name, file));
   forceDirSync(path.dirname(to));
   fs.writeFileSync(to, replacer(fs.readFileSync(from)));
 });
@@ -103,12 +106,3 @@ scanDir('build', function(file) {
   forceDirSync(path.dirname(to));
   fs.writeFileSync(to, replacer(fs.readFileSync(from)));
 });
-
-forceDirSync(path.join('apps', values.name, 'src', 'img'));
-fs.writeFileSync(
-   path.join('apps', values.name, 'src', 'img', 'cover.png'),
-   fs.readFileSync(path.join('src', 'img', 'cover.png')),
-   {
-     encoding: null
-   }
-);

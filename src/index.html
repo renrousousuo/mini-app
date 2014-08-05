@@ -4,9 +4,6 @@
   <meta charset="utf-8">
   <title>__@title__</title>
   <meta name="author" content="__@author__">
-  <link rel="stylesheet" href="css/base.css">
-  <script src="js/base.js"></script>
-  <script src="js/game.js"></script>
   <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="full-screen" content="true">
@@ -16,6 +13,8 @@
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
   <meta http-equiv="expires" content="-1">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/game.css">
 </head>
 <body>
   <header>
@@ -27,13 +26,20 @@
     <a href="__@morepage__">更多游戏</a>
     <a href="__@weixin__">关注我们</a>
   </footer>
-
-  <script>
-void function() {
-  game.init({
-
-  });
-}();
-  </script>
+  <div id="panelGameover">
+    <div><button id="btnReplay">再玩一次</button></div>
+    <div><button id="btnShare">炫耀一下</button></div>
+    <div id="labelScoreMsg"></div>
+    <div id="panelLinks">
+      <a id="linkMore" href="__morepage__">更多游戏</a>
+      <a id="linkFollow" href="__winxin__">关注我们</a>
+    </div>
+  </div>
+  <div id="panelShare">
+    <img width="100%" src="data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot;></svg>">
+  </div>
+  <script src="js/base.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/__name__.js"></script>
 </body>
 </html>

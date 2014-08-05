@@ -2,9 +2,29 @@ var base = base || {};
 
 void function(exports) {
 
-  var mobile = /Mobile|Android|SymbianOS|Phone|Pad|Pod/.test(navigator.userAgent);
+  var ua = navigator.userAgent;
+  var mobile = /Mobile|Android|SymbianOS|Phone|Pad|Pod/.test(ua);
 
-  var firefox = /firefox\/\d+\.\d+/i.test(navigator.userAgent);
+  var firefox = /firefox\/\d+\.\d+/i.test(ua); // 火狐浏览器
+  var weibo = /Weibo/.test(ua); // 微博浏览器
+  var baiduboxapp = /baiduboxapp/.test(ua); // 百度框
+  var baidubrowser = /baidubrowser/.test(ua); // 百度浏览器
+  var weixin = /MicroMessenger/.test(ua); // 微信
+
+  /**
+   * 获取浏览器环境
+   */
+  function browser() {
+    return {
+      firefox: firefox,
+      weibo: weibo,
+      baiduboxapp: baiduboxapp,
+      baidubrowser: baidubrowser,
+      weixin: weixin
+    };
+  }
+
+  exports.browser = browser;
 
   /* 字符串处理 */
   /**
@@ -55,9 +75,16 @@ void function(exports) {
 
   exports.playSound = playSound;
 
+  /**
+   * 是否在移动环境
+   */
   function isMobile() {
     return mobile;
   }
+
+  /**
+   * 是否在 PC 环境
+   */
   function isPC() {
     return !mobile;
   }

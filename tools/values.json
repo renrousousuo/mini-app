@@ -2,6 +2,7 @@
   "name": "hello",
   "title": "标题",
   "description": "描述",
+  "channel": "norm",
   "homepage": "http://endgame.duapp.com/games/__name__/",
   "morepage": "http://end.baidu.com/",
   "cover-url": "http://endgame.duapp.com/games/__name__/img/cover.png",

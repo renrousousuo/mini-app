@@ -187,12 +187,13 @@ void function(exports) {
   var btnShare = document.querySelector('#btnShare');
   if (btnShare) {
     btnShare.addEventListener('click', function() {
-      if (browser['baidubrowser']) {
+      if (browser['baidubrowser']) { // 百度浏览器
         if (typeof flyflow_webkit_js != 'undefined') {
           flyflow_webkit_js.onShare(
             configs.title,
             configs.img_url,
-            configs.home);
+            configs.home
+          );
         }
         return;
       }
@@ -208,7 +209,7 @@ void function(exports) {
   }
 
   var imgShare = document.querySelector('#panelShare img');
-  if (browser['weixin']) {
+  if (browser['weixin']) { // 微信
     imgShare.src = 'img/weixin-share.png';
   }
 }(game);

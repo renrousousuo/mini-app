@@ -43,8 +43,9 @@ void function(exports) {
     for (var name in options) {
       configs[name] = options[name];
     }
-    var maxScoreKey = base.format('__name__.#{channel}.maxScore', configs);
+    maxScoreKey = base.format('__name__.#{channel}.maxScore', configs);
     maxScore = localStorage[maxScoreKey] || 0;
+    setCurrScore(0);
     replay();
   }
   exports.init = init;
@@ -70,6 +71,24 @@ void function(exports) {
       localStorage[maxScoreKey] = maxScore;
     }
   }
+
+  /**
+   * 增加积分
+   * @param{Number} offset 变化的部分
+   */
+  function setScoreBy(offset) {
+    setCurrScore(currScore + offset);
+  }
+  exports.setScoreBy = setScoreBy;
+
+  /**
+   * 设置积分
+   * @param{Number} value 变化后的值
+   */
+  function setScoreTo(value) {
+    setCurrScore(value);
+  }
+  exports.setScoreTo = setScoreTo;
 
   /**
    * 更多游戏

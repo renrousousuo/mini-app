@@ -1,6 +1,8 @@
 var fs = require('fs');
 var path = require('path');
-var valueFile = path.join('tools', 'values.json');
+
+var input = process.argv[2] || 'values.json';
+var valueFile = path.join('tools', input);
 
 if (!fs.existsSync(valueFile)) {
   console.error('"%s" not exists.', valueFile);

@@ -5,26 +5,46 @@ void function(exports) {
   var ua = navigator.userAgent;
   var mobile = /Mobile|Android|SymbianOS|Phone|Pad|Pod/.test(ua);
 
-  var firefox = /firefox\/\d+\.\d+/i.test(ua); // 火狐浏览器
-  var weibo = /Weibo/.test(ua); // 微博浏览器
-  var baiduboxapp = /baiduboxapp/.test(ua); // 百度框
-  var baidubrowser = /baidubrowser/.test(ua); // 百度浏览器
-  var weixin = /MicroMessenger/.test(ua); // 微信
+  var browsers = {
+    firefox: /firefox\/\d+\.\d+/i.test(ua), // 火狐浏览器
+    weibo: /Weibo/.test(ua), // 微博浏览器
+    baiduboxapp: /baiduboxapp/.test(ua), // 百度框
+    baidubrowser: /baidubrowser/.test(ua), // 百度浏览器
+    weixin: /MicroMessenger/.test(ua), // 微信
+    ucbrowser: /UCBrowser/.test(ua) // UC 浏览器
+  };
 
   /**
    * 获取浏览器环境
    */
   function browser() {
-    return {
-      firefox: firefox,
-      weibo: weibo,
-      baiduboxapp: baiduboxapp,
-      baidubrowser: baidubrowser,
-      weixin: weixin
-    };
+    return browsers;
   }
 
   exports.browser = browser;
+
+  /**
+   * 获取浏览器环境
+   */
+  function isBrowser(name) {
+    return browsers[name];
+  }
+
+  exports.isBrowser = isBrowser;
+
+  /**
+  * 随机打乱数组
+  * @param{Array} arr 数组对象
+  */
+  function shuffle(arr) {
+    for (var i = 0; i < arr.length; i++) {
+      var j = parseInt(Math.random() * (arr.length - i));
+      var t = arr[arr.length - i - 1];
+      arr[arr.length - i - 1] = arr[j];
+      arr[j] = t;
+    }
+  }
+  exports.shuffle = shuffle;
 
   /* 字符串处理 */
   /**
@@ -39,6 +59,24 @@ void function(exports) {
   }
 
   exports.format = format;
+
+  /**
+   * HTML编码
+   * @param {String} text
+   */
+  function encodeHTML(text){
+    return String(text).replace(/["<>& ]/g, function(all){
+      return "&" + {
+        '"': 'quot',
+        '<': 'lt',
+        '>': 'gt',
+        '&': 'amp',
+        ' ': 'nbsp'
+      }[all] + ";";
+    });
+  }
+
+  exports.encodeHTML = encodeHTML;
 
   /* 声音处理 */
   var soundElements;

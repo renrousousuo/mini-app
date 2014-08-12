@@ -21,16 +21,8 @@
   </footer>
   <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
   <script src="js/jquery.qrcode.min.js"></script>
+  <script src="js/base.js"></script>
   <script src="__@trackerUrl__"></script>
-  <script>
-$(function() {
-  var ie = document.all && document.attachEvent;
-  var ie9plus = ie && window.XMLHttpRequest && window.addEventListener && document.documentMode >= 9;
-  $('#qrcodeTable').qrcode({
-    render: ie && !ie9plus ? 'table' : 'canvas',
-    text: '__homepage__'
-  });
-});
-  </script>
+  <script src="js/pc.js"></script>
 </body>
 </html>

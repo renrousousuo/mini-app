@@ -1,11 +1,22 @@
 var __name__ = __name__ || {};
 
 void function(exports) {
-  if (!game.init) {
-    return;
+  /*<debug>*/
+  function __uri(url) {
+    return url;
   }
+  /*</debug>*/
 
-  game.init({
+  var options = {
+    name: '__name__',
+    home: __uri('__homepage__'),
+    more: __uri('__morepage__'),
+    title: '__title__',
+    desc: '__description__',
+    channel: '__channel__',
+    coverUrl: __uri('__cover-url__'),
+    coverWidth: '__cover-width__',
+    coverHeight: '__cover-height__',
     /**
      * 游戏结束
      */
@@ -33,10 +44,15 @@ void function(exports) {
       }
       /* TODO */
     }
-  });
+  };
 
+  function init() {
+    game.init(options);
+  }
+  exports.init = init;
   // game.replay();
   // game.more();
   /* TODO : 游戏逻辑 */
-  game.gameover();
+  init();
+
 }(__name__);

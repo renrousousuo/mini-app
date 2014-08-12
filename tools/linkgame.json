@@ -8,6 +8,7 @@
   "cover-url": "http://endgame.duapp.com/games/__name__/img/cover.png",
   "cover-width": 108,
   "cover-height": 108,
-  "weixin": "http://mp.weixin.qq.com/s?__biz=MzA5Mzk1OTMwMA==&mid=200386384&idx=1&sn=2121268247b24cca125c5c8f433a7cf0#rd",
+  "weixin-url": "http://mp.weixin.qq.com/s?__biz=MzA5Mzk1OTMwMA==&mid=200386384&idx=1&sn=2121268247b24cca125c5c8f433a7cf0#rd",
+  "tracker-url": "http://tajs.qq.com/stats?sId=35888230",
   "author": "zswang"
 }

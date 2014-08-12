@@ -6,7 +6,7 @@ void function(exports) {
     /*<debug>*/
     if (location.protocol !== 'file:') {
     /*</debug>*/
-      location.href = 'pc.html';
+      location.href = base.format('pc.html#{search}#{hash}', location);
       return;
     /*<debug>*/
     }
@@ -17,14 +17,6 @@ void function(exports) {
   var maxScoreKey;
 
   var configs = {
-    home: '__homepage__',
-    more: '__morepage__',
-    title: '__title__',
-    desc: '__description__',
-    channel: '__channel__',
-    coverUrl: '__cover-url__',
-    coverWidth: '__cover-width__',
-    coverHeight: '__cover-height__',
     onGameover: null, // function() { ... }
     onReplay: null, // function() { ... }
     onScoreChange: null, // function(currScore, oldScore, maxScore, result) { ... }
@@ -43,7 +35,7 @@ void function(exports) {
     for (var name in options) {
       configs[name] = options[name];
     }
-    maxScoreKey = base.format('__name__.#{channel}.maxScore', configs);
+    maxScoreKey = base.format('#{name}.#{channel}.maxScore', configs);
     maxScore = localStorage[maxScoreKey] || 0;
     setCurrScore(0);
     replay();

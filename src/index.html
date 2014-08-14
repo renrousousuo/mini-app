@@ -45,27 +45,17 @@
   <div id="panelShare">
     <img width="100%" src="data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot;></svg>">
   </div>
+  <link rel="import" href="../../inc/share.html?__inline">
   <script>
-  endgame.share.set({
-    "imgUrl": "http://end.baidu.com/games/__name__/logo.png",
-    "timeLineLink": "http://end.baidu.com/games/__name__/",
-    "tTitle": "硬的游戏",
-    "tContent": "无硬的不游戏"
-  });
-  endgame.share.on('gohome',function(){
+    endgame.share.set({
+      "imgUrl": "http://end.baidu.com/games/__name__/logo.png",
+      "timeLineLink": "http://end.baidu.com/games/__name__/",
+      "tTitle": "硬的游戏",
+      "tContent": "无硬的不游戏"
+    });
+    endgame.share.on('gohome',function(){
       window.location.href = 'http://end.baidu.com/games/__name__/';
-      });
-  function uptitle(score){
-    var msg = '';
-    if(score){
-      score = parseInt(score);
-      msg = '我在游戏中，获得了' + score + '分,你行你试试？';
-    }else{
-      msg = '快来一起玩,跳跃的杰克!!!';
-    }
-    document.title = msg;
-    endgame.share.set('tTitle',msg);
-  }
+    });
   </script>
   <script src="js/__name__.js"></script>
   <script src="__trackerUrl__"></script>

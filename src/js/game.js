@@ -140,10 +140,9 @@ void function(exports) {
     if (configs.onGameover) {
       configs.onGameover();
     }
-    showGameover();
+    //showGameover();
     if(endgame&&endgame.share){
-      uptitle(); //score
-      endgame.share.trigger();
+      endgame.share.showPanel('硬的游戏，无硬的不游戏',replay);
     }
   }
 

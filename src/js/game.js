@@ -91,6 +91,7 @@ void function(exports) {
   exports.more = more;
 
   /*global WeixinJSBridge: true*/
+  /* share.js 已经提供微信分享的接口，并兼容百度浏览器接口
   document.addEventListener(strWeixinJSBridgeReady, function(e) {
     if (configs.onWeixinReady) {
       configs.onWeixinReady(e);
@@ -118,6 +119,7 @@ void function(exports) {
       }, more);
     });
   });
+  */
 
   /**
    * 从新游戏开始
@@ -139,6 +141,10 @@ void function(exports) {
       configs.onGameover();
     }
     showGameover();
+    if(endgame&&endgame.share){
+      uptitle(); //score
+      endgame.share.trigger();
+    }
   }
 
   exports.gameover = gameover;

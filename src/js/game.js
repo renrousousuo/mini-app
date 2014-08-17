@@ -86,7 +86,7 @@ void function(exports) {
    * 更多游戏
    */
   function more() {
-    location.href = configs.home;
+    location.href = configs.more;
   }
   exports.more = more;
 

@@ -6,6 +6,6 @@ $(function() {
     render: ie && !ie9plus ? 'table' : 'canvas',
     text: base.format(
       '__homepage__', location
-    ）
+    )
   });
 });

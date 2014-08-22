@@ -12,37 +12,225 @@
 #panelShare img {
 }
 
-#panelGameover {
-  display: none;
+#panelReady {
+  position: absolute;
   text-align: center;
-  padding-top: 20px;
+  font-size: 18px;
+  color: #323232;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#panelBox {
+  overflow: hidden;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  max-width: 380px;
+  margin: 0 auto;
 }
 
-#panelGameover button {
-  font-size: 25px;
-}
-
-#panelLinks a {
-  color: red;
-  padding: 0 20px;
-}
-
-#panelLinks {
-  width: 100%;
-  height: 45px;
+#panelLisa {
+  width: 116px;
+  height: 234px;
   position: absolute;
-  left: 0;
-  bottom: 50px;
-  font-size: 26px;
+  bottom: 0;
+  right: 0;
+  display: inline-block;
+  background: url("../img/lisa1.png") no-repeat 0 0,
+    url("../img/lisa2.png") no-repeat 1000 0,
+    url("../img/lisa3.png") no-repeat 2000 0;
+  background-size: cover;
 }
 
-#labelScoreMsg {
-  padding: 15px;
-  color: #aaa;
+#panelLisa.step1 {
+  background: url("../img/lisa2.png") no-repeat 0 0;
+  background-size: cover;
+}
+
+#panelLisa.step2 {
+  background: url("../img/lisa3.png") no-repeat 0 0;
+  background-size: cover;
+}
+
+#panelReady .header {
+  padding-top: 50px;
+}
+
+#panelReady .body {
+  position: absolute;
+  right: 0;
+  bottom: 190px;
+  left: 0;
+}
+
+#panelReady .hint {
+  padding-top: 18px;
+}
+
+#panelReady .floot {
+  background-color: rgb(52, 181, 166);
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  left: 0;
+}
+
+#panelReady.gameover .floot {
+  background-color: rgb(255, 83, 110);
+}
+
+#panelReady .body img {
+  margin: 0 15px;
+}
+
+#panelReady.start .floot .share-banner {
+  display: none;
+}
+
+#panelReady.gameover .floot .home-banner {
+  display: none;
+}
+
+#panelReady.start #btnAgain {
+  display: none;
+}
+
+#panelReady.start #btnShare {
+  display: none;
+}
+
+#panelReady.gameover #btnStart {
+  display: none;
+}
+
+#panelReady em {
+  font-style: normal;
+  color: rgb(0, 173, 159);
+}
+
+#panelLife {
+  padding-top: 3px;
+  background-repeat: no-repeat;
+  background-image:
+    url("../img/life-on.png"),
+    url("../img/life-on.png"),
+    url("../img/life-on.png"),
+    url("../img/life-on.png"),
+    url("../img/life-on.png");
+  background-size: 25px 25px;
+
+  background-position: 5px 2px, 37.5px 2px, 70px 2px, 102.5px 2px, 135px 2px;
+  height: 30px;
+}
+
+#panelLife.count4 {
+  background-image:
+    url("../img/life-on.png"),
+    url("../img/life-on.png"),
+    url("../img/life-on.png"),
+    url("../img/life-on.png"),
+    url("../img/life-off.png");
+}
+
+#panelLife.count3 {
+  background-image:
+    url("../img/life-on.png"),
+    url("../img/life-on.png"),
+    url("../img/life-on.png"),
+    url("../img/life-off.png"),
+    url("../img/life-off.png");
+}
+
+#panelLife.count2 {
+  background-image:
+    url("../img/life-on.png"),
+    url("../img/life-on.png"),
+    url("../img/life-off.png"),
+    url("../img/life-off.png"),
+    url("../img/life-off.png");
+}
+
+#panelLife.count1 {
+  background-image:
+    url("../img/life-on.png"),
+    url("../img/life-off.png"),
+    url("../img/life-off.png"),
+    url("../img/life-off.png"),
+    url("../img/life-off.png");
+}
+
+#panelLife.count0 {
+  background-image:
+    url("../img/life-off.png"),
+    url("../img/life-off.png"),
+    url("../img/life-off.png"),
+    url("../img/life-off.png"),
+    url("../img/life-off.png");
+}
+
+.charactor {
+  position: absolute;
+  width: 43px;
+  height: 83px;
+  background-repeat: no-repeat;
+  background-size: 43px 83px;
+
+  -webkit-animation-iteration-count: infinite; /* 动画无限播放 */
+  -webkit-animation-timing-function: step-start; /* 马上跳到动画每一结束桢的状态 */
+  -webkit-animation-duration: 0.5s; /* 动画运行的时间 */
+}
+
+.charactor.girl-on {
+  -webkit-animation-name: charector-girl-on-run; /* 动画名称 */
+}
+.charactor.boy-on {
+  -webkit-animation-name: charector-boy-on-run; /* 动画名称 */
+}
+.charactor.girl-off {
+  -webkit-animation-name: charector-girl-off-run; /* 动画名称 */
+}
+.charactor.boy-off {
+  -webkit-animation-name: charector-boy-off-run; /* 动画名称 */
+}
+
+@-webkit-keyframes charector-girl-off-run {
+  0% { background-image: url("../img/girl-off-1.png"); }
+  50% { background-image: url("../img/girl-off-2.png"); }
+  100% { background-image: url("../img/girl-off-1.png"); }
+}
+
+@-webkit-keyframes charector-boy-off-run {
+  0% { background-image: url("../img/boy-off-1.png"); }
+  50% { background-image: url("../img/boy-off-2.png"); }
+  100% { background-image: url("../img/boy-off-1.png"); }
+}
+
+@-webkit-keyframes charector-girl-on-run {
+  0% { background-image: url("../img/girl-on-1.png"); }
+  50% { background-image: url("../img/girl-on-2.png"); }
+  100% { background-image: url("../img/girl-on-1.png"); }
+}
+
+@-webkit-keyframes charector-boy-on-run {
+  0% { background-image: url("../img/boy-on-1.png"); }
+  50% { background-image: url("../img/boy-on-2.png"); }
+  100% { background-image: url("../img/boy-on-1.png"); }
+}
+
+#panelScore {
+  padding-top: 150px;
+  font-size: 112.5px;
+  color: #b7e5dc;
+  width: 100%;
+  text-align: center;
+}
+
+#btnMore {
+  border-radius: 5px;
+  margin-top: 15px;
 }

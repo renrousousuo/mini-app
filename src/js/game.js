@@ -223,4 +223,9 @@ void function(exports) {
   if (browser['weixin']) { // 微信
     imgShare.src = 'img/weixin-share.png';
   }
+
+  document.body.addEventListener('touchmove', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+  });
 }(game);
